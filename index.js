@@ -18,6 +18,8 @@ const lenWordBank = word_bank.length;
 // choose random words
 let randomWord;
 let final_sentence;
+let wpm ;
+let accuracy;
 function getRandomWord() {
   let randomNumber = Math.floor(Math.random() * lenWordBank);
   randomWord = word_bank[randomNumber];
@@ -38,28 +40,51 @@ function makeSentence(words) {
     }
   }
   return final_sentence;
+  
 }
+let sentence = makeSentence(30);
+
+//convert word into string
+function convert_into_span() {
+  
+  var split = sentence.split("");
+  console.log(split)
+  var html = '';
+  for(let i = 0; i < split.length; i++) {
+      html += '<span class="single_letter">' + split[i] + '</span>';
+  }
+  document.getElementById('text').innerHTML = html;
+}
+convert_into_span()
+
+
+
+//look for keydown events
 
 let keyDownCount = 0;
-let sentence = makeSentence(30);
 document.addEventListener("keydown", function (event) {
   console.log(event.key);
 
   if (event.key == sentence[keyDownCount]) {
-    document.querySelector(".text").classList.add("sucess");
+    document.querySelectorAll
+    (".single_letter")[keyDownCount].classList.add("sucess");
     console.log(sentence[keyDownCount]);
     console.log("ok");
     keyDownCount++;
     console.log(keyDownCount);
-  } else if (event.key == backspace) {
+  } else if (event.key == "backspace") {
     console.log("ok");
     console.log(keyDownCount);
-  } else {
+  } 
+  else {
     console.log(sentence[keyDownCount]);
+    document.querySelectorAll(".single_letter")[keyDownCount].classList.add("error");
     console.log("not ok");
     keyDownCount++;
     console.log(keyDownCount);
   }
 });
 
-document.querySelector(".text").innerHTML = sentence;
+
+
+

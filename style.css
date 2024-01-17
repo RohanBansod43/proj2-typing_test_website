@@ -1,3 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.text_box{
+    padding-top: 100px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.text_box p{
+    width: 700px;
+    margin: 30px;
+    border-radius: 2px solid black;
+    font-size: x-large;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
 .sucess{
     color: rgb(55, 173, 74);
 }
