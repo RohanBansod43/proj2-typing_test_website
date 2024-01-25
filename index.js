@@ -1,25 +1,28 @@
 const word_bank = [
-  "hello",
-  "who",
-  "are",
-  "you",
-  "to",
-  "tell",
-  "me",
-  "too",
-  "stop",
+  "slay",
+  "queen",
+  "bruh",
+  "nest",
+  "head",
+  "food",
+  "hood",
+  "singer",
+  "movie",
   "talking",
-  "please",
-  "try",
-  "not",
-  "bye",
+  "side",
+  "chick",
+  "nigga",
+  "porn",
 ];
+
+let sucess = 0;
+let error = 0;
+let accuracy;
 const lenWordBank = word_bank.length;
 // choose random words
 let randomWord;
 let final_sentence;
 let wpm ;
-let accuracy;
 function getRandomWord() {
   let randomNumber = Math.floor(Math.random() * lenWordBank);
   randomWord = word_bank[randomNumber];
@@ -42,7 +45,7 @@ function makeSentence(words) {
   return final_sentence;
   
 }
-let sentence = makeSentence(30);
+let sentence = makeSentence(10);
 
 //convert word into string
 function convert_into_span() {
@@ -68,20 +71,29 @@ document.addEventListener("keydown", function (event) {
   if (event.key == sentence[keyDownCount]) {
     document.querySelectorAll
     (".single_letter")[keyDownCount].classList.add("sucess");
-    console.log(sentence[keyDownCount]);
-    console.log("ok");
+    sucess++
     keyDownCount++;
-    console.log(keyDownCount);
-  } else if (event.key == "backspace") {
-    console.log("ok");
-    console.log(keyDownCount);
+    console.log(sucess);
+  } else if (event.key == "Backspace") {
+    if(keyDownCount>0){keyDownCount--;
+    console.log(event.key)
+    sucess--;
+    document.querySelectorAll
+    (".single_letter")[keyDownCount].classList.remove("sucess", "error");
+    }
   } 
+  else if(keyDownCount == sentence.length){
+    accuracy = Math.floor((sucess/keyDownCount)*100)
+    
+    console.log(accuracy)
+  }
   else {
     console.log(sentence[keyDownCount]);
     document.querySelectorAll(".single_letter")[keyDownCount].classList.add("error");
     console.log("not ok");
     keyDownCount++;
-    console.log(keyDownCount);
+    error++
+    console.log(error);
   }
 });
 
